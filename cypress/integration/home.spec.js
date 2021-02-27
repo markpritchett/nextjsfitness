@@ -1,7 +1,6 @@
 describe('Home Page', () => {
-    it('contains default heading', () => {
+    it('contains app name', () => {
       cy.visit('http://localhost:3000/')
-      cy.contains('Welcome to')
-      cy.get('a').contains('Next.js!')
+      cy.contains('Next.jsFitness')
     })
   })
