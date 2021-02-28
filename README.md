@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A demo e-commeerce application built using:
+A demo e-commerce application built using:
 
 * [Next.js](https://nextjs.org/)
 * [graphcms](https://graphcms.com/) - a GraphQL-powered headless CMS
