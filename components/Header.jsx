@@ -24,7 +24,9 @@ const MobileHeader = ({ categories }) => {
           {isOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
         <AppNameLink />
-        <CartIcon />
+        <Link href="/cart">
+          <a><CartIcon /></a>
+        </Link>
       </div>
       <ul className={` text-gray-800 ${isOpen ? 'block' : 'hidden'}`}>
         {categories.map(c => (
@@ -43,16 +45,16 @@ const NonMobileHeader = ({ categories }) => (
   <div className="hidden sm:flex items-center justify-between bg-green-100">
     <div className="flex items-center">
 
-    <AppNameLink />
-    <ul className="ml-10 flex space-x-5 text-gray-800">
-      {categories.map(c => (
-        <li key={c.id} className="hover:bg-green-400 hover:text-white">
-          <Link href={`/categories/${c.slug}`}>
-            <a className="block py-4 px-2">{c.name}</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
+      <AppNameLink />
+      <ul className="ml-10 flex space-x-5 text-gray-800">
+        {categories.map(c => (
+          <li key={c.id} className="hover:bg-green-400 hover:text-white">
+            <Link href={`/categories/${c.slug}`}>
+              <a className="block py-4 px-2">{c.name}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
     <Link href="/cart">
       <a><CartIcon /></a>
