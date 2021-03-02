@@ -4,7 +4,7 @@ import TwitterIcon from "./TwitterIcon"
 
 const Footer = () => (
     <footer className=" bg-green-200 w-full">
-        <div className="sm:px-3 md:container md:mx-auto">
+        <div className="py-4 sm:px-3 md:container md:mx-auto">
             <div className="px-3 sm:px-0 space-y-6 md:flex md:space-y-0 md:py-8 md:space-x-20">
                 <div>
                     <h2 className="text-gray-700 uppercase text-xl font-bold tracking-wider">Social</h2>

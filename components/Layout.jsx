@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 export default function Layout({ title, categories, content }) {
     const headTitle = title ? `Next.js Fitness | ${title}` : 'Next.js Fitness'
     return (
-        <div className="min-h-screen flex flex-col bg-gray-100 sm:space-y-4">
+        <div className="min-h-screen flex flex-col bg-gray-100 space-y-1 sm:space-y-4">
             <Head>
                 <title>{headTitle}</title>
                 <link rel="icon" href="/favicon.ico" />

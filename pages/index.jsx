@@ -15,7 +15,7 @@ export async function getStaticProps() {
 export default function Home({ categories }) {
   return (
     <Layout content={(
-      <div className="space-y-3 md:space-y-0 md:grid md:grid-cols-3 md:gap-4">
+      <div className="space-y-1 md:space-y-0 md:grid md:grid-cols-3 md:gap-4">
         {categories.map(c => (
           <Link key={c.id} href={`/categories/${c.slug}`}>
             <a className="relative h-48 flex overflow-hidden focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
