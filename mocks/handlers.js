@@ -1,31 +1,83 @@
 import { graphql } from 'msw'
 
 export const handlers = [
-    graphql.query('MainCategoriesQuery', (_req, res, ctx) => {
+    graphql.query('AllCategoriesQuery', (_req, res, ctx) => {
         // used https://randomwordgenerator.com/fake-word.php to generate some fake words
         return res(
             ctx.data({
-                categories: [{
-                    id: '1',
-                    name: 'Flunges',
-                    imageSrc: 'https://source.unsplash.com/CYyoMFLljJo',
-                    slug: 'flunges'
-                }, {
-                    id: '2',
-                    name: 'Groopsters',
-                    imageSrc: 'https://source.unsplash.com/CQwNdMxwjfk',
-                    slug: 'groopsters'
-                }, {
-                    id: '3',
-                    name: 'Goawhips',
-                    imageSrc: 'https://source.unsplash.com/pCT8ag1o3nU',
-                    slug: 'goawhips'
-                }, {
-                    id: '4',
-                    name: 'Ductorms',
-                    imageSrc: 'https://source.unsplash.com/U00w3A4iC7c',
-                    slug: 'ductorms'
-                }]
+                categories: [
+                    {
+                        id: '1',
+                        name: 'Flunges',
+                        slug: 'flunges',
+                        imageSrc: 'https://source.unsplash.com/CQwNdMxwjfk',
+                        categories: [],
+                        parent: null
+                    },
+                    
+                    {
+                        id: '2',
+                        name: 'Groopsters',
+                        slug: 'groopsters',
+                        imageSrc: 'https://source.unsplash.com/CQwNdMxwjfk',
+                        categories: [
+                            {
+                                id: '5',
+                                name: 'Go Go Goxes',
+                                slug: 'go-go-goxes',
+                                categories: [
+                                    {
+                                        id: '6',
+                                        name: 'Corroticks',
+                                        slug: 'corroticks',
+                                        categories: []
+                                    }
+                                ]
+                            }
+                        ],
+                        parent: null
+                    },
+                    
+                    {
+                        id: '3',
+                        name: 'Goawhips',
+                        slug: 'goawhips',
+                        imageSrc: 'https://source.unsplash.com/CQwNdMxwjfk',
+                        categories: [],
+                        parent: null
+                    },
+                    {
+                        id: '4',
+                        name: 'Ductorms',
+                        slug: 'ductorms',
+                        imageSrc: 'https://source.unsplash.com/CQwNdMxwjfk',
+                        categories: [],
+                        parent: null
+                    },
+                    {
+                        id: '5',
+                        name: 'Go Go Goxes',
+                        slug: 'go-go-goxes',
+                        imageSrc: 'https://source.unsplash.com/CQwNdMxwjfk',
+                        categories: [
+                            {
+                                id: '6',
+                                name: 'Corroticks',
+                                slug: 'corroticks',
+                                categories: []
+                            }
+                        ],
+                        parent: { id: '2' }
+                    },
+                    {
+                        id: '6',
+                        name: 'Corroticks',
+                        slug: 'corroticks',
+                        imageSrc: 'https://source.unsplash.com/CQwNdMxwjfk',
+                        categories: [],
+                        parent: { id: '5' }
+                    },
+                ]
             }),
         )
     }),
