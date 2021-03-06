@@ -14,12 +14,12 @@ export const handlers = [
                     id: '2',
                     name: 'Groopsters',
                     imageSrc: 'https://source.unsplash.com/CQwNdMxwjfk',
-                    slug: 'groopster'
+                    slug: 'groopsters'
                 }, {
                     id: '3',
                     name: 'Goawhips',
                     imageSrc: 'https://source.unsplash.com/pCT8ag1o3nU',
-                    slug: 'goawhipS'
+                    slug: 'goawhips'
                 }, {
                     id: '4',
                     name: 'Ductorms',

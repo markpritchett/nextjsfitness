@@ -20,19 +20,19 @@ const MobileHeader = ({ categories }) => {
   return (
     <div className="bg-green-50 sm:hidden">
       <div className="flex justify-between items-center p-3 bg-green-100">
-        <button type="button" onClick={toggleVisibility}>
+        <button data-test="mobile-menu-button" type="button" onClick={toggleVisibility}>
           {isOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
         <AppNameLink />
         <Link href="/cart">
-          <a><CartIcon /></a>
+          <a data-test="header-cart-link"><CartIcon /></a>
         </Link>
       </div>
       <ul className={` text-gray-800 ${isOpen ? 'block' : 'hidden'}`}>
         {categories.map(c => (
           <li key={c.id} className="hover:bg-green-400 hover:text-white">
             <Link href={`/categories/${c.slug}`}>
-              <a className="block py-4 px-3" onClick={toggleVisibility}>{c.name}</a>
+              <a data-test="header-nav-link" className="block py-4 px-3" onClick={toggleVisibility}>{c.name}</a>
             </Link>
           </li>
         ))}
@@ -50,14 +50,14 @@ const NonMobileHeader = ({ categories }) => (
         {categories.map(c => (
           <li key={c.id} className="hover:bg-green-400 hover:text-white">
             <Link href={`/categories/${c.slug}`}>
-              <a className="block py-4 px-2">{c.name}</a>
+              <a data-test="header-nav-link" className="block py-4 px-2">{c.name}</a>
             </Link>
           </li>
         ))}
       </ul>
     </div>
     <Link href="/cart">
-      <a><CartIcon /></a>
+      <a data-test="header-cart-link"><CartIcon /></a>
     </Link>
   </div>
 )
