@@ -1,6 +1,6 @@
 import "tailwindcss/tailwind.css";
 
-if (Boolean(process.env.MOCK_GRAPHQL_REQUESTS)) {
+if (process.env.MOCK_GRAPHQL_REQUESTS === 'true') {
   require('../mocks')
 }
 
