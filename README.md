@@ -24,21 +24,25 @@ A demo e-commerce application built using:
 ``` bash
 npm install
 ```
-* If you'd like use mock data for local development, at the root of the project, create a `.env.local` file with the following content:
+If you'd like use mock data for local development, at the root of the project, create a `.env.local` file with the following content:
 ```
 MOCK_GRAPHQL_REQUESTS=true
 ```
-* Open a command prompt / terminal at the root of the project, start the development server:
+Open a command prompt / terminal at the root of the project, start the development server:
 ``` bash
 npm run dev
 ```
 ## Testing
 
-* Open a command prompt / terminal at the root of the project, start the development server:
+The tests rely on mock data.  So ensure you've already created a  `.env.local` at the root of your project with the following content:
+```
+MOCK_GRAPHQL_REQUESTS=true
+```
+Open a command prompt / terminal at the root of the project, start the development server:
 ``` bash
 npm run dev
 ```
-* Open a separate command prompt / terminal at the root of the project, start cypress:
+Open a separate command prompt / terminal at the root of the project, start cypress:
 ``` bash
 npm run cypress:open
 ```
