@@ -40,3 +40,22 @@ export async function getAllCategories() {
 
   return categories
 }
+
+export async function getAllProducts() {
+  const { products } = await graphcms.request(
+    `
+      query AllProductsQuery {
+        products {
+          id
+          name
+          slug
+          price
+          category {
+            id
+          }
+        }
+      }
+    `)
+
+  return products
+}
