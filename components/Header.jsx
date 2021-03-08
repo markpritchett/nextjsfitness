@@ -31,7 +31,7 @@ const MobileHeader = ({ categories }) => {
   const toggleVisibility = () => setIsOpen(isOpen => !isOpen)
   return (
     <div className="bg-green-50 sm:hidden">
-      <div className="flex justify-between items-center p-3 bg-green-100">
+      <div className="flex justify-between items-end p-3 bg-green-100">
         <button data-test="mobile-menu-button" type="button" onClick={toggleVisibility}>
           {isOpen ? <CloseIcon /> : <MenuIcon />}
         </button>
