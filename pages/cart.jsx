@@ -77,7 +77,7 @@ export default function Cart({ categories }) {
           </div>
         </>
         }
-        {processingOrder && <div class="text-2xl text-green-400">Processing...</div>}
+        {processingOrder && <div className="text-2xl text-green-400">Processing...</div>}
       </div>
     )} categories={mainCategories} />
   )
