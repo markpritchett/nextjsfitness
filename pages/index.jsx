@@ -21,7 +21,7 @@ export default function Home({ categories }) {
           <Link key={c.id} href={`/categories/${c.slug}`}>
             <a className="relative h-48 flex overflow-hidden focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
               <div className="absolute overflow-hidden z-10 inline-flex items-center justify-center w-full h-6 py-8 text-white text-3xl font-light bg-green-200 bg-opacity-50">{c.name}</div>
-              <img className="object-cover flex w-full transform scale-100 hover:scale-105" src={c.imageSrc} />
+              <img className="object-cover flex w-full transform scale-100 hover:scale-105" src={c.imageSrc} alt={c.name} />
             </a>
           </Link>
         ))}
