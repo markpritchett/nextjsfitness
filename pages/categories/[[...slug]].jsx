@@ -49,7 +49,7 @@ export default function CategoryPage({ categories, products }) {
     const { slug } = router.query
     const { asPath } = router
 
-    const matchingCategories = slug.map(s => categories.find(c => c.slug == s))
+    const matchingCategories = slug.map(s => categories.find(c => c.slug === s))
     const mainCategories = categories.filter(c => !c.parent)
     const currentCategorySlug = slug[slug.length - 1]
     const currentCategory = categories.find(c => c.slug === currentCategorySlug)
