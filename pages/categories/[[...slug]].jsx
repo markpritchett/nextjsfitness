@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { getAllCategories, getAllProducts } from '../../graphql'
 import Layout from '../../components/Layout'
 import Breadcrumb from '../../components/Breadcrumb';
+import CategoryList from '../../components/CategoryList';
 
 export async function getStaticPaths() {
     const categories = await getAllCategories();
@@ -63,27 +64,28 @@ export default function CategoryPage({ categories, products }) {
         }
     })
 
+    const subCategories = currentCategory.categories.map(subCategory => Object.assign({}, { ...subCategory }, { href: `${asPath}/${subCategory.slug}` }))
     const matchingProducts = products.filter(p => p.category?.id === currentCategory.id)
 
     return (
         <Layout content={(
             <div>
                 <Breadcrumb items={breadcrumbItems} />
+                <div className="mt-1 sm:mt-5">
+                    {subCategories.length > 0 && <CategoryList categories={subCategories} dataTestAttrValue="category-link" />}
 
-                <div className="space-y-1 md:space-y-0 md:grid md:grid-cols-3 md:gap-4">
-                    {currentCategory.categories.map(subCat => (
-                        <Link key={subCat.id} href={`${asPath}/${subCat.slug}`}>
-                            <a data-test="sub-category-link" className="text-4xl hover:bg-green-400 hover:text-white bg-gray-200 flex justify-center items-center w-64 h-64 rounded text-green-500">{subCat.name}</a>
-                        </Link>
-                    ))}
-                </div>
-
-                <div className="space-y-1 md:space-y-0 md:grid md:grid-cols-3 md:gap-4">
-                    {matchingProducts.map(p => (
-                        <Link key={p.id} href={`/products/${p.slug}`}>
-                            <a data-test="sub-category-link" className="text-4xl hover:bg-green-400 hover:text-white bg-gray-200 flex justify-center items-center text-center w-64 h-64 rounded text-green-500">{p.name}</a>
-                        </Link>
-                    ))}
+                    {matchingProducts.length > 0 && (
+                        <div className="bg-gray-50 px-1 md:px-10 md:pb-10">
+                            <h2 className="py-3 text-2xl uppercase tracking-widest font-semibold text-center text-green-600">Products</h2>
+                            <div className="space-y-1 md:space-y-0 md:grid md:grid-cols-3 md:gap-4">
+                                {matchingProducts.map(p => (
+                                    <Link key={p.id} href={`/products/${p.slug}`}>
+                                        <a data-test="sub-category-link" className="text-4xl hover:bg-green-400 hover:text-white bg-gray-200 flex justify-center items-center text-center w-full h-32 sm:h-48 rounded text-green-500">{p.name}</a>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </ div>
 

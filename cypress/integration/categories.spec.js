@@ -12,7 +12,7 @@ describe('Categories Page', () => {
         })
         it('contains link to sub-category', () => {
             cy.visit('http://localhost:3000/categories/groopsters')
-            cy.get('[data-test=sub-category-link]').contains('Go Go Goxes').should('have.attr', 'href', '/categories/groopsters/go-go-goxes')
+            cy.contains('Go Go Goxes').should('have.attr', 'href', '/categories/groopsters/go-go-goxes')
         })
     })
 })

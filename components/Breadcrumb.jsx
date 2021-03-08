@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 const Breadcrumb = ({items}) => (
-    <div className="bg-gray-200 flex p-3 mb-5">
+    <div className="bg-gray-200 flex p-3">
         {items.map((item, index) => (
             <div className="text-xl" key={item.id}>
                 {index === items.length - 1 ?
