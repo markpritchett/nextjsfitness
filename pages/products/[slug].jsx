@@ -3,7 +3,8 @@ import { useRouter } from 'next/router'
 import { getAllCategories, getAllProducts } from '../../graphql'
 import Layout from '../../components/Layout'
 import { useCartDispatch } from '../../context/cart-context'
-import { formatMoney } from "../../formatting";
+import { formatMoney } from "../../formatting"
+import QuantityPicker from '../../components/QuantityPicker'
 
 export async function getStaticProps() {
   const categories = await getAllCategories()
@@ -39,18 +40,8 @@ export default function ProductPage({ categories, products }) {
   const product = products.find(p => p.slug === slug)
   const dispatch = useCartDispatch()
   const [quantity, setQuantity] = useState(1)
-
-  const handleQuantityChange = e => {
-    let newValue = Number(e.target.value) || 1
-    if (newValue < 1) {
-      newValue = 1
-    }
-    return setQuantity(newValue);
-  }
-  const increment = () => setQuantity(quantity => quantity + 1)
-  const decrement = () => setQuantity(quantity => quantity > 1 ? quantity - 1 : 1)
+  const handleQuantityChange = quantity => setQuantity(quantity)
   const addProduct = () => dispatch({ type: 'add_item', payload: Object.assign({}, { ...product }, { quantity }) })
-
   return (
     <Layout content={(
       <div>
@@ -59,12 +50,7 @@ export default function ProductPage({ categories, products }) {
           <div className="px-4 pt-1 pb-2 flex flex-col">
             <div className="text-4xl text-gray-700">{product.name}s</div>
             <div className="text-2xl text-gray-400">{formatMoney(product.price)}</div>
-            <div>
-              <span className="text-gray-400 uppercase text-sm">Qty</span>
-              <button className="ml-2 border-t border-l border-b border-gray-50 focus:outline-none bg-gray-200 text-gray-600 font-bold px-3 py-1" onClick={decrement} disabled={quantity < 2}>-</button>
-              <input type="text" className="w-12 border-t border-b border-gray-50 text-center px-3 py-2 -ml-1 -mr-1 focus:outline-none" value={quantity} onChange={handleQuantityChange} />
-              <button className="border-t border-l border-b border-gray-50 focus:outline-none bg-gray-200 text-gray-600 font-bold px-3 py-1" onClick={increment}>+</button>
-            </div>
+            <QuantityPicker OnQuantityChange={handleQuantityChange} />
             <button className="mt-auto align-bottom w-full px-4 py-3 rounded-md bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-green-500" onClick={addProduct}>
               Add
             </button>
