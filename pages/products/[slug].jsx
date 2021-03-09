@@ -50,7 +50,7 @@ export default function ProductPage({ categories, products }) {
           <div className="px-4 pt-1 pb-2 flex flex-col">
             <div className="text-4xl text-gray-700">{product.name}s</div>
             <div className="text-2xl text-gray-400">{formatMoney(product.price)}</div>
-            <QuantityPicker OnQuantityChange={handleQuantityChange} />
+            <QuantityPicker OnQuantityChange={handleQuantityChange} initialValue={1} />
             <button className="mt-auto align-bottom w-full px-4 py-3 rounded-md bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-green-500" onClick={addProduct}>
               Add
             </button>

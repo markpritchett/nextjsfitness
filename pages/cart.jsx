@@ -4,21 +4,19 @@ import Layout from '../components/Layout'
 import { useCartState, useCartDispatch } from '../context/cart-context'
 import { formatMoney } from '../formatting'
 import { useState } from 'react'
+import QuantityPicker from '../components/QuantityPicker'
 
 const CartItem = ({ id, name, quantity, price }) => {
   const dispatch = useCartDispatch()
+  const handleQuantityChange = quantity => dispatch({ type: 'update_item', payload: { id, quantity } }) //setQuantity(quantity)
   return (
-    <div className="items-center grid grid-cols-5 gap-2 odd:bg-gray-50 px-6 py-4">
-      <div className="w-25">
-        <img className="h-16 w-16" src="https://source.unsplash.com/random" alt={name} />
-      </div>
-      <div>{name}</div>
-      <div>x{quantity}</div>
-      <div>
-        <div className="text-right">{formatMoney(price)} <span className="text-sm text-gray-400">(each)</span> </div>
-      </div>
-      <div className="text-right">
-        <button className="px-4 py-3 rounded-md bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-red-500" onClick={() => dispatch({ type: 'remove_item', payload: { id } })}>Remove</button>
+    <div className="bg-gray-50 rounded-md inline-flex pr-10 shadow-md">
+      <img className="h-48 w-48 overflow-hidden rounded-l-md" src="https://source.unsplash.com/random" alt={name} />
+      <div className="px-4 pt-1 pb-2 flex flex-col">
+        <div className="text-4xl text-gray-700">{name}s</div>
+        <div className="text-2xl text-gray-400">{formatMoney(price)}</div>
+        <QuantityPicker OnQuantityChange={handleQuantityChange} initialValue={quantity} />
+        <button className="my-auto px-4 py-3 rounded-md bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-red-500" onClick={() => dispatch({ type: 'remove_item', payload: { id } })}>Remove</button>
       </div>
     </div>
   )

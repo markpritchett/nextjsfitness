@@ -19,6 +19,15 @@ function CartReducer(state, action) {
 
             return { items }
         }
+        case 'update_item': {
+            const items = [...state.items]
+            const existingItemIndex = state.items.findIndex(x => x.id === action.payload.id)
+            const existingItem = state.items[existingItemIndex]
+            const updatedItem = Object.assign({}, { ...existingItem }, { quantity: action.payload.quantity })
+            items.splice(existingItemIndex, 1, updatedItem)
+            
+            return { items }
+        }
         case 'remove_item': {
             const items = [...state.items]
             const index = state.items.findIndex(x => x.id === action.payload.id)

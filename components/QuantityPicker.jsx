@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const QuantityPicker = ({ OnQuantityChange }) => {
-    const [quantity, setQuantity] = useState(1)
+const QuantityPicker = ({ initialValue, OnQuantityChange }) => {
+    const [quantity, setQuantity] = useState(initialValue)
     const handleQuantityChange = e => {
         let newValue = Number(e.target.value) || 1
         if (newValue < 1) {
